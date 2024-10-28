@@ -1,0 +1,41 @@
+<div class="mx-auto max-w-screen-2xl">
+
+@switch (productsState.state().status) {
+     @case ('loading') {
+          <p>Loading...</p>
+     }
+
+     @case ('error') {
+          <p>Error</p>
+     }
+
+     @default {
+          <div class="flex justify-end mt-8">
+               <button type="button" 
+               (click)="changePage()"
+               class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Cambiar Página</button>
+          </div>
+          <div class="mt-6 grid grid-cols-[repeat(2,300px)] gap-6 sm:grid-cols-[repeat(4,300px)] lg:grid-cols-5">
+               @for (product of productsState.state().products; track product) {
+                    <app-product-card [product]="product" />
+               }
+          </div>
+     }
+}
+<!-- ! con el if else -->
+<!-- @if (productsState.state().status === 'loading') {
+     <p>Loading...</p>
+} @else {
+     <div class="flex justify-end mt-8">
+          <button type="button" 
+          (click)="changePage()"
+          class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Cambiar Página</button>
+     </div>
+     <div class="mt-6 grid grid-cols-[repeat(2,300px)] gap-6 sm:grid-cols-[repeat(4,300px)] lg:grid-cols-5">
+          @for (product of productsState.state().products; track product) {
+               <app-product-card [product]="product" class="block" />
+          }
+     </div>
+} -->
+</div>
+
