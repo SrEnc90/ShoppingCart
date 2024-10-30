@@ -18,4 +18,8 @@ export class ProductsService extends BaseHttpService { //! el this.http proviene
             }
         });
     }
+
+    getProduct(id: string): Observable<Product> {
+        return this.http.get<Product>(`${this.apiUrl}/products/${id}`);
+    }
 }
